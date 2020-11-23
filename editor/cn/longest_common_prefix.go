@@ -59,6 +59,11 @@ func longestCommonPrefixA(strs []string) string {
 	return string(same)
 }
 
+// 方案B： 分治
+// 通过分组两两对比得出共同前缀，最后合并对比
+// a b c d e f g h
+// 分四组对比 ab cd ef gh
+// 合并对比 ac eg => ae
 func longestCommonPrefixB(strs []string) string {
 	if len(strs) == 0 {
 		return ""
@@ -88,6 +93,12 @@ func min(x, y int) int {
 	return y
 }
 
+// 方案C： 二分对比
+// 区别与方案B的分治对比，二分对比 是对单个字符串进行二分查找对比
+// 例如： "flower", "flight"
+//  len("flower") = 6  len("flight") = 7
+// 二分比较：   flo vs  fli 不相同 继续二分比较
+// fl vs fl return fl 共同前缀
 func longestCommonPrefixC(strs []string) string {
 	if len(strs) == 0 {
 		return ""
