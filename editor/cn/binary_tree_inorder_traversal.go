@@ -79,6 +79,31 @@ type TreeNode struct {
  * }
  */
 func inorderTraversal(root *TreeNode) []int {
+	var is = make([]int, 0)
+	if root == nil {
+		return is
+	}
+
+	var fn func(tn *TreeNode, is *[]int)
+	fn = func(tn *TreeNode, is *[]int) {
+		if tn.Left != nil {
+			fn(tn.Left, is)
+		}
+
+		*is = append(*is, tn.Val)
+
+		if tn.Right != nil {
+			fn(tn.Right, is)
+		}
+	}
+
+	fn(root, &is)
+	return is
+}
+
+//leetcode submit region end(Prohibit modification and deletion)
+
+func inorderTraversal_A(root *TreeNode) []int {
 	//var fn func(tn *TreeNode)  []int
 	//fn = func(tn *TreeNode)  []int {
 	//	var is = make([]int, 0)
@@ -113,5 +138,3 @@ func inorderTraversal(root *TreeNode) []int {
 
 	return is
 }
-
-//leetcode submit region end(Prohibit modification and deletion)
