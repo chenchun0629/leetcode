@@ -63,11 +63,11 @@ func main() {
 // 进阶: 递归算法很简单，你可以通过迭代算法完成吗？
 // Related Topics 栈 树 深度优先搜索 二叉树 👍 1156 👎 0
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+//type TreeNode struct {
+//	Val   int
+//	Left  *TreeNode
+//	Right *TreeNode
+//}
 
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
