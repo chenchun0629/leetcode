@@ -45,11 +45,11 @@ func main() {
 //
 // Related Topics 树 深度优先搜索 广度优先搜索 二叉树 👍 714 👎 0
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+//type TreeNode struct {
+//	Val   int
+//	Left  *TreeNode
+//	Right *TreeNode
+//}
 
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
