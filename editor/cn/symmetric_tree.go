@@ -43,11 +43,11 @@ func main() {
 // 你可以运用递归和迭代两种方法解决这个问题吗？
 // Related Topics 树 深度优先搜索 广度优先搜索 二叉树 👍 1600 👎 0
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+//type TreeNode struct {
+//	Val   int
+//	Left  *TreeNode
+//	Right *TreeNode
+//}
 
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
