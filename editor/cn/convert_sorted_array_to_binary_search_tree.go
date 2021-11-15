@@ -37,12 +37,12 @@ func main() {
 // nums 按 严格递增 顺序排列
 //
 // Related Topics 树 二叉搜索树 数组 分治 二叉树 👍 867 👎 0
-
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+//
+//type TreeNode struct {
+//	Val   int
+//	Left  *TreeNode
+//	Right *TreeNode
+//}
 
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
