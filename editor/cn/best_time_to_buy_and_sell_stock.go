@@ -43,7 +43,7 @@ func main() {
 // Related Topics 数组 动态规划 👍 1940 👎 0
 
 //leetcode submit region begin(Prohibit modification and deletion)
-func maxProfit(prices []int) int {
+func maxProfit_I(prices []int) int {
 	var l = len(prices)
 
 	if l <= 0 {
