@@ -31,7 +31,7 @@ import "fmt"
 // 👍 1307 👎 0
 
 //leetcode submit region begin(Prohibit modification and deletion)
-func isPalindrome(x int) bool {
+func isPalindrome_I(x int) bool {
 	return isPalindromeB(x)
 }
 
