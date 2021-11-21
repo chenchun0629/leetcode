@@ -62,11 +62,11 @@ func main() {
 
 //[3,9,20,null,null,15,7]
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+//type TreeNode struct {
+//	Val   int
+//	Left  *TreeNode
+//	Right *TreeNode
+//}
 
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
