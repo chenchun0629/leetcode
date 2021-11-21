@@ -104,22 +104,6 @@ func inorderTraversal(root *TreeNode) []int {
 //leetcode submit region end(Prohibit modification and deletion)
 
 func inorderTraversal_A(root *TreeNode) []int {
-	//var fn func(tn *TreeNode)  []int
-	//fn = func(tn *TreeNode)  []int {
-	//	var is = make([]int, 0)
-	//	if tn.Left != nil {
-	//		is = append(is, fn(tn.Left)...)
-	//	}
-	//
-	//	is = append(is, tn.Val)
-	//
-	//	if tn.Right != nil {
-	//		is = append(is, fn(tn.Right)...)
-	//	}
-	//
-	//	return is
-	//}
-
 	var is = make([]int, 0)
 
 	if root == nil {
