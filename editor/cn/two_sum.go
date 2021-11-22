@@ -19,7 +19,7 @@ import "fmt"
 // 👍 9624 👎 0
 
 //leetcode submit region begin(Prohibit modification and deletion)
-func twoSum(nums []int, target int) []int {
+func twoSum_I(nums []int, target int) []int {
 	return twoSumC(nums, target)
 }
 
