@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func main() {
 	var l = &ListNode{
 		Val: 1,
@@ -56,19 +54,19 @@ func main() {
 //
 // Related Topics 递归 链表 👍 741 👎 0
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
-func (n *ListNode) Print() {
-	var i = make([]interface{}, 0)
-	for c := n; c != nil; c = c.Next {
-		i = append(i, c.Val)
-	}
-
-	fmt.Printf("%#v \n", i)
-}
+//type ListNode struct {
+//	Val  int
+//	Next *ListNode
+//}
+//
+//func (n *ListNode) Print() {
+//	var i = make([]interface{}, 0)
+//	for c := n; c != nil; c = c.Next {
+//		i = append(i, c.Val)
+//	}
+//
+//	fmt.Printf("%#v \n", i)
+//}
 
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
