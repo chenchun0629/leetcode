@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	var s = Constructor()
+	var s = ConstructorMyStack()
 	s.Push(1)
 	s.Push(2)
 	s.Push(3)
@@ -72,7 +72,7 @@ type MyStack struct {
 	queue1, queue2 []int
 }
 
-func Constructor() MyStack {
+func ConstructorMyStack() MyStack {
 	return MyStack{}
 }
 
