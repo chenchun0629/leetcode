@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	var c = Constructor()
+	var c = ConstructorMyQueue()
 	c.Push(1)
 	c.Push(2)
 	fmt.Println(c.Peek())
@@ -80,7 +80,7 @@ type MyQueue struct {
 	stack2 []int
 }
 
-func Constructor() MyQueue {
+func ConstructorMyQueue() MyQueue {
 	return MyQueue{}
 }
 
