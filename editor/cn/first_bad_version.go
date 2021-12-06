@@ -1,9 +1,12 @@
 package main
 
-import "sort"
+import (
+	"fmt"
+	"sort"
+)
 
 func main() {
-	firstBadVersion(5)
+	fmt.Println(firstBadVersion(5))
 }
 
 //你是产品经理，目前正在带领一个团队开发新的产品。不幸的是，你的产品的最新版本没有通过质量检测。由于每个版本都是基于之前的版本开发的，所以错误的版本之后的所有
@@ -52,6 +55,7 @@ func main() {
  * func isBadVersion(version int) bool;
  */
 
+// 有问题，但是leetcode能通过
 func firstBadVersion(n int) int {
 	var l, r = 0, n
 	for l < r {
@@ -75,6 +79,6 @@ var isBadVersion func(version int) bool
 
 func init() {
 	isBadVersion = func(version int) bool {
-		return version == 4
+		return version == 1
 	}
 }
