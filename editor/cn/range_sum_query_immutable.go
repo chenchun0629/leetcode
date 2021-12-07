@@ -54,7 +54,7 @@ type NumArray struct {
 	l    int
 }
 
-func Constructor(nums []int) NumArray {
+func NumArrayConstructor(nums []int) NumArray {
 	return NumArray{nums: nums, l: len(nums)}
 }
 
