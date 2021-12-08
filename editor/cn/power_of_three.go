@@ -69,7 +69,7 @@ func isPowerOfThree(n int) bool {
 func isPowerOfThree_B(n int) bool {
 	// ln e^2 / ln e = 2
 	// ln 9 / ln 3 = 2
-	// ln 27 / ln 3 = 3
+	// ln 27 / ln 3 = log{_3} 27 = 3
 	return (n > 0) && (int(math.Pow(3, math.Log(float64(n))/math.Log(3))) == n)
 }
 
