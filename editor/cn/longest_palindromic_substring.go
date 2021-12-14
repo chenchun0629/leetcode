@@ -51,7 +51,7 @@ func main() {
 // Related Topics 字符串 动态规划 👍 4451 👎 0
 
 //leetcode submit region begin(Prohibit modification and deletion)
-func longestPalindrome(s string) string {
+func longestPalindrome_1(s string) string {
 	var fn func(s string, idx int, longest string) string
 	fn = func(s string, idx int, longest string) string {
 		var (
