@@ -1,5 +1,7 @@
 package main
 
+import "strings"
+
 func main() {
 
 }
@@ -76,7 +78,36 @@ func main() {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 func intToRoman(num int) string {
+	var (
+		sb = strings.Builder{}
+		mp = []struct {
+			val    int
+			symbol string
+		}{
+			{1000, "M"},
+			{900, "CM"},
+			{500, "D"},
+			{400, "CD"},
+			{100, "C"},
+			{90, "XC"},
+			{50, "L"},
+			{40, "XL"},
+			{10, "X"},
+			{9, "IX"},
+			{5, "V"},
+			{4, "IV"},
+			{1, "I"},
+		}
+	)
 
+	for _, v := range mp {
+		for num >= v.val {
+			num -= v.val
+			sb.WriteString(v.symbol)
+		}
+	}
+
+	return sb.String()
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
