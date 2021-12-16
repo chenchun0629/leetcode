@@ -75,7 +75,7 @@ func longestCommonPrefixB(strs []string) string {
 		}
 		mid := (start + end) / 2
 		lcpLeft, lcpRight := lcp(start, mid), lcp(mid+1, end)
-		minLength := min(len(lcpLeft), len(lcpRight))
+		minLength := longestCommonPrefixMin(len(lcpLeft), len(lcpRight))
 		for i := 0; i < minLength; i++ {
 			if lcpLeft[i] != lcpRight[i] {
 				return lcpLeft[:i]
@@ -86,7 +86,7 @@ func longestCommonPrefixB(strs []string) string {
 	return lcp(0, len(strs)-1)
 }
 
-func min(x, y int) int {
+func longestCommonPrefixMin(x, y int) int {
 	if x < y {
 		return x
 	}

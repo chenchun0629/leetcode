@@ -44,6 +44,12 @@ func isPalindromeB(x int) bool {
 		return false
 	}
 
+	// 这里的只要目的是将x降位，并且将降位的数添加至y上
+	// 例如：12321
+	// 第一步， x = 1232 y = y*10+1 = 1
+	// 第二步， x = 123  y = y*10+2 = 12
+	// 第三步， x = 12   u = y*10+3 = 123
+	// 第四步， x < y 退出循环
 	var y int
 	for x > y {
 		var p = x % 10
@@ -51,6 +57,7 @@ func isPalindromeB(x int) bool {
 		y = y*10 + p
 	}
 
+	// 两种情况：
 	// x == y => 1221 => 12 & 21
 	// x == y/10 => 12321 => 12 & 321 => 12 & 21
 	return x == y || x == y/10

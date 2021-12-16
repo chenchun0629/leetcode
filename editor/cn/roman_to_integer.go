@@ -78,6 +78,7 @@ func romanToInt(s string) int {
 }
 
 // 方案B
+// 关键第零个作为prev， 循环从第一个开始作为cur
 // 我们可以找到新歌规则
 // 前一个数大于后一个数时，我们可以剪掉后一个数
 // 前一个数小于大于等于后一个数时，我们可以加上后一个数
@@ -109,7 +110,7 @@ func romanToIntB(s string) int {
 // 方案A
 // 根据规则，可以分为三个步骤
 // 1、循环遍历字符串， 确定一个span 如 X、IV、IXL 等
-// 2、计算span结果， x => 10, IV => 4, IXL => 39
+// 2、计算span结果， X => 10, IV => 4, IXL => 39
 // 3、将所有span加在一起得到最后结果
 // 例如： MCMXCIV 分为 M、 CM、 XC、 IV 4个span
 // 最后结果为： 1000 + (-100 + 1000) + (-10 + 1000) + (-1 + 5) = 1000 + 900 + 90 + 4 = 1994
@@ -171,5 +172,6 @@ var (
 //leetcode submit region end(Prohibit modification and deletion)
 
 func main() {
-	fmt.Println(romanToInt("MCMXCIV"))
+	fmt.Println(romanToInt("LVIII"))
+	//fmt.Println(romanToInt("MCMXCIV"))
 }
