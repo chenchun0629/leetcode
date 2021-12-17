@@ -61,7 +61,7 @@ func main() {
 // Related Topics 数组 二分查找 👍 1223 👎 0
 
 //leetcode submit region begin(Prohibit modification and deletion)
-func searchInsert(nums []int, target int) int {
+func searchInsert_B1(nums []int, target int) int {
 	var (
 		ret         = len(nums)
 		left, right = 0, ret - 1
