@@ -64,6 +64,9 @@ func findPoisonedDuration(timeSeries []int, duration int) int {
 		return d
 	}
 
+	// 每次攻击叠加 duration 秒
+	// 但是攻击间隔时间太短，需要剪掉重复时间段的时间， cur - prev = diff < duration 秒时， d = d - (duration - diff)
+
 	var prev int = -duration
 	for _, v := range timeSeries {
 		d = d + duration
