@@ -6,11 +6,20 @@ import (
 )
 
 func main() {
+	//var candidates = []int{1,2,3}
+	////var pt = candidates[0:3:3]
+	//	var pt = make([]int, len(candidates))
+	//	copy(pt, candidates)
+	//		pt[0] = 2
+	//fmt.Println(candidates)
+	//fmt.Println(pt)
+	//	return
 	//var x = []int{2, 3}
 	//var y = x
 	//y[0] = 1
 	//fmt.Println(x, y)
-	fmt.Printf("%#v \n", combinationSum([]int{2, 7, 6, 3, 5, 1}, 9))
+	fmt.Printf("%#v \n", combinationSum([]int{1, 2, 3}, 9))
+	//fmt.Printf("%#v \n", combinationSum([]int{2, 7, 6, 3, 5, 1}, 9))
 	//fmt.Printf("%#v \n", combinationSum([]int{2, 3, 5, 7}, 8))
 	//fmt.Printf("%#v \n", combinationSum([]int{3, 5}, 8))
 	//fmt.Printf("%#v \n", combinationSum([]int{1, 2}, 4))
@@ -93,7 +102,8 @@ func combinationSum(candidates []int, target int) [][]int {
 			}
 
 			var tmp = candidates[i]
-			var pt = prefix
+			var pt = make([]int, len(prefix))
+			copy(pt, prefix)
 			for tmp <= target {
 				if tmp == target {
 					ret = append(ret, append(pt, candidates[i]))
@@ -101,8 +111,8 @@ func combinationSum(candidates []int, target int) [][]int {
 					fn(append(pt, candidates[i]), i+1, target-tmp)
 				}
 
-				pt = append(pt, candidates[i])
 				tmp = tmp + candidates[i]
+				pt = append(pt, candidates[i])
 			}
 		}
 	}
