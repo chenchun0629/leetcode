@@ -79,6 +79,10 @@ func getMinimumDifference(root *TreeNode) int {
 		//	fn(n.Left)
 		//}
 
+		//     5
+		//  3     7
+		// 1 2   6  8
+
 		fn(n.Left)
 
 		if pre != -1 && n.Val-pre < minV {
