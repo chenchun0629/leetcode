@@ -2,13 +2,34 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 	"sort"
 )
 
 func main() {
-	//fmt.Println(permuteUnique([]int{1, 1, 2}))
-	fmt.Println(permuteUnique([]int{3, 3, 0, 3}))
-
+	var ms_b runtime.MemStats
+	var ms_e runtime.MemStats
+	runtime.ReadMemStats(&ms_b)
+	//fmt.Println(permuteUnique([]int{3, 3, 0, 3}))
+	fmt.Println(permuteUnique([]int{1, 2, 3}))
+	runtime.ReadMemStats(&ms_e)
+	fmt.Printf("%d \n", ms_e.Alloc-ms_b.Alloc)
+	//==== %+v[]
+	//==== %+v[1]
+	//==== %+v[2 1]
+	//==== %+v[3 2 1]
+	//==== %+v[3 1]
+	//==== %+v[2 3 1]
+	//==== %+v[2]
+	//==== %+v[1 2]
+	//==== %+v[3 1 2]
+	//==== %+v[3 2]
+	//==== %+v[1 3 2]
+	//==== %+v[3]
+	//==== %+v[1 3]
+	//==== %+v[2 1 3]
+	//==== %+v[2 3]
+	//==== %+v[1 2 3]
 }
 
 //给定一个可包含重复数字的序列 nums ，按任意顺序 返回所有不重复的全排列。
@@ -63,7 +84,6 @@ func permuteUnique(nums []int) [][]int {
 				continue
 			}
 
-			//var tmp = append([]int{nums[i]}, prefix...)
 			prefix = append(prefix, nums[i])
 			visited[i] = true
 			fn()
