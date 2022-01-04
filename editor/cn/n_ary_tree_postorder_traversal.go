@@ -1,7 +1,21 @@
 package main
 
-func main() {
+import "fmt"
 
+func main() {
+	var node = &Node{
+		Val: 1,
+		Children: []*Node{
+			{Val: 3, Children: []*Node{
+				{Val: 5},
+				{Val: 6},
+			}},
+			{Val: 2},
+			{Val: 4},
+		},
+	}
+
+	fmt.Println(postorder(node))
 }
 
 //给定一个 N 叉树，返回其节点值的 后序遍历 。
@@ -49,6 +63,11 @@ func main() {
 //
 // Related Topics 栈 树 深度优先搜索 👍 174 👎 0
 
+//type Node struct {
+//	Val      int
+//	Children []*Node
+//}
+
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
  * Definition for a Node.
@@ -59,6 +78,31 @@ func main() {
  */
 
 func postorder(root *Node) []int {
+	var ret []int
+	if root == nil {
+		return ret
+	}
+
+	var stack = []*Node{root}
+
+	for len(stack) > 0 {
+		var node = stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+
+		ret = append([]int{node.Val}, ret...)
+
+		stack = append(stack, node.Children...)
+		//for i := 0; i < len(node.Children); i++ {
+		//	stack = append(stack, node.Children[i])
+		//}
+	}
+
+	return ret
+}
+
+//leetcode submit region end(Prohibit modification and deletion)
+
+func postorder_A(root *Node) []int {
 	var ret []int
 	var fn func(node *Node)
 
@@ -77,5 +121,3 @@ func postorder(root *Node) []int {
 	fn(root)
 	return ret
 }
-
-//leetcode submit region end(Prohibit modification and deletion)
