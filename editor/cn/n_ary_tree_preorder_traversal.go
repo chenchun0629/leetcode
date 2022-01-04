@@ -64,6 +64,32 @@ type Node struct {
 
 func preorder(root *Node) []int {
 	var ret []int
+
+	if root == nil {
+		return ret
+	}
+
+	var q = []*Node{root}
+
+	for len(q) > 0 {
+		var node = q[0]
+		ret = append(ret, node.Val)
+
+		q = q[1:]
+		//var tmp = make([]*Node, 0)
+		for k, v := range node.Children {
+			//tmp = append(tmp, v)
+			q = append(q[:k], append([]*Node{v}, q[k:]...)...)
+		}
+	}
+
+	return ret
+}
+
+//leetcode submit region end(Prohibit modification and deletion)
+
+func preorder_A(root *Node) []int {
+	var ret []int
 	var fn func(node *Node)
 
 	fn = func(node *Node) {
@@ -80,5 +106,3 @@ func preorder(root *Node) []int {
 	fn(root)
 	return ret
 }
-
-//leetcode submit region end(Prohibit modification and deletion)
