@@ -41,6 +41,46 @@ func main() {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 func canPlaceFlowers(flowerbed []int, n int) bool {
+	// 0 1 => 1 / 2 = 0
+	// 0 0 1 => 2 / 2 = 1
+	// 0 0 0 1 => 3 / 2 = 1
+	// 0 1 1 => (2 - 1 - 2) / 2 = 0
+	// 0 1 0 1 => (3 - 1 - 2) / 2 = 0
+	// 0 1 0 0 1 =>  (4 - 1 - 2) / 2 = 0
+	// 0 1 0 0 0 1 => (5 - 1 - 2) / 2 = 1
+
+	var (
+		l     = len(flowerbed)
+		count int
+		prev  = -1
+	)
+
+	for i := 0; i < l; i++ {
+		if flowerbed[i] == 1 {
+			if prev < 0 {
+				count += (i / 2)
+			} else {
+				count += (i - prev - 2) / 2
+			}
+			if count >= n {
+				return true
+			}
+			prev = i
+		}
+	}
+
+	if prev < 0 {
+		count += (l + 1) / 2
+	} else {
+		count += (l - prev - 1) / 2
+	}
+
+	return count >= n
+}
+
+//leetcode submit region end(Prohibit modification and deletion)
+
+func canPlaceFlowers_A(flowerbed []int, n int) bool {
 	var (
 		l = len(flowerbed)
 	)
@@ -69,5 +109,3 @@ func canPlaceFlowers(flowerbed []int, n int) bool {
 
 	return n <= 0
 }
-
-//leetcode submit region end(Prohibit modification and deletion)
