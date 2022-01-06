@@ -64,7 +64,61 @@ func main() {
 // Related Topics 数组 👍 530 👎 0
 
 //leetcode submit region begin(Prohibit modification and deletion)
+
+//解答成功:
+//执行耗时:8 ms,击败了77.36% 的Go用户
+//内存消耗:4.6 MB,击败了68.48% 的Go用户
 func insert(intervals [][]int, newInterval []int) [][]int {
+	var (
+		ret         [][]int
+		left, right = newInterval[0], newInterval[1]
+		inserted    bool
+		min         = func(a, b int) int {
+			if a < b {
+				return a
+			}
+			return b
+		}
+		max = func(a, b int) int {
+			if a > b {
+				return a
+			}
+			return b
+		}
+	)
+
+	for _, v := range intervals {
+		if v[0] > right {
+			// n n o o
+			if !inserted {
+				ret = append(ret, []int{left, right})
+				inserted = true
+			}
+			ret = append(ret, v)
+		} else if v[1] < left {
+			// o o 。。。 n n 无交集
+			ret = append(ret, v)
+		} else {
+			// 与插入区间有交集，计算它们的并集
+			left = min(left, v[0])
+			right = max(right, v[1])
+		}
+	}
+
+	if !inserted {
+		ret = append(ret, []int{left, right})
+		inserted = true
+	}
+
+	return ret
+}
+
+//leetcode submit region end(Prohibit modification and deletion)
+
+//解答成功:
+//执行耗时:4 ms,击败了98.85% 的Go用户
+//内存消耗:4.6 MB,击败了79.66% 的Go用户
+func insert_A(intervals [][]int, newInterval []int) [][]int {
 	var (
 		ret      [][]int
 		n        = len(intervals)
@@ -169,5 +223,3 @@ func insert(intervals [][]int, newInterval []int) [][]int {
 
 	return ret
 }
-
-//leetcode submit region end(Prohibit modification and deletion)
