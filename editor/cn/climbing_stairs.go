@@ -33,7 +33,7 @@ func main() {
 
 var mem = make(map[int]int)
 
-func climbStairs(n int) int {
+func climbStairs1(n int) int {
 	if n <= 2 {
 		return n
 	}
@@ -51,7 +51,7 @@ func climbStairs(n int) int {
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
-func climbStairs_A(n int) int {
+func climbStairs_A1(n int) int {
 	if n == 1 {
 		return 1
 	}
