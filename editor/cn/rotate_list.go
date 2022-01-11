@@ -1,10 +1,9 @@
 package main
 
 func main() {
-	//var head = &ListNode{Val: 1}
-	//head.AppendValue(2).AppendValue(3).AppendValue(4).AppendValue(5)
-	//head.Print()
-	rotateRight(nil, 7).Print()
+	var head = &ListNode{Val: 1}
+	head.AppendValue(2).AppendValue(3).AppendValue(4).AppendValue(5)
+	rotateRight(head, 2).Print()
 }
 
 //给你一个链表的头节点 head ，旋转链表，将链表每个节点向右移动 k 个位置。
@@ -64,6 +63,42 @@ func main() {
  * }
  */
 func rotateRight(head *ListNode, k int) *ListNode {
+	if head == nil || head.Next == nil || k == 0 {
+		return head
+	}
+
+	var (
+		n    int = 1
+		iter     = head
+	)
+
+	for iter.Next != nil {
+		iter = iter.Next
+		n++
+	}
+
+	var change = n - k%n
+	if n == change {
+		return head
+	}
+
+	// 首位相连
+	iter.Next = head
+	for change > 0 {
+		iter = iter.Next
+		change--
+	}
+
+	// 将下一个赋值给变量
+	var ret = iter.Next
+	// 解除环形链表
+	iter.Next = nil
+	return ret
+}
+
+//leetcode submit region end(Prohibit modification and deletion)
+
+func rotateRight_A(head *ListNode, k int) *ListNode {
 	if head == nil {
 		return head
 	}
@@ -108,5 +143,3 @@ func rotateRight(head *ListNode, k int) *ListNode {
 
 	return h.Next
 }
-
-//leetcode submit region end(Prohibit modification and deletion)
