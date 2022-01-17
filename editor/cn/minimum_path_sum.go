@@ -41,6 +41,44 @@ func main() {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 func minPathSum(grid [][]int) int {
+	// 迭代
+	var (
+		m, n = len(grid), len(grid[0])
+		min  = func(a, b int) int {
+			if a > b {
+				return b
+			}
+			return a
+		}
+		backlog = make([][]int, 0)
+	)
+
+	for i := 0; i < m; i++ {
+		backlog = append(backlog, make([]int, n))
+	}
+
+	backlog[0][0] = grid[0][0]
+
+	for i := 1; i < m; i++ {
+		backlog[i][0] = backlog[i-1][0] + grid[i][0]
+	}
+	for i := 1; i < n; i++ {
+		backlog[0][i] = backlog[0][i-1] + grid[0][i]
+	}
+
+	for i := 1; i < m; i++ {
+		for j := 1; j < n; j++ {
+			backlog[i][j] = min(backlog[i-1][j], backlog[i][j-1]) + grid[i][j]
+		}
+	}
+
+	return backlog[m-1][n-1]
+}
+
+//leetcode submit region end(Prohibit modification and deletion)
+
+// 递归
+func minPathSum_A(grid [][]int) int {
 	var (
 		m, n = len(grid), len(grid[0])
 		fn   func(x, y int) int
@@ -77,5 +115,3 @@ func minPathSum(grid [][]int) int {
 
 	return fn(0, 0)
 }
-
-//leetcode submit region end(Prohibit modification and deletion)
