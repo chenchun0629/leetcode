@@ -59,6 +59,38 @@ func main() {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 func uniquePaths(m int, n int) int {
+	// 迭代
+	var (
+		backlog = make([][]int, 0)
+	)
+
+	for i := 0; i < m; i++ {
+		backlog = append(backlog, make([]int, n))
+	}
+
+	backlog[0][0] = 1
+
+	for i := 1; i < m; i++ {
+		backlog[i][0] = backlog[i-1][0]
+	}
+
+	for j := 1; j < n; j++ {
+		backlog[0][j] = backlog[0][j-1]
+	}
+
+	for i := 1; i < m; i++ {
+		for j := 1; j < n; j++ {
+			backlog[i][j] = backlog[i][j-1] + backlog[i-1][j]
+		}
+	}
+
+	return backlog[m-1][n-1]
+}
+
+//leetcode submit region end(Prohibit modification and deletion)
+
+// 数学排列数组
+func uniquePaths_B(m int, n int) int {
 	// m = 3, n = 7
 	// 从左上角到右下角的过程中，我们需要移动 m+n-2 次，其中有 m-1 次向下移动，n-1 次向右移动
 	// 路径的总数，就等于从 m+n-2 次移动中选择 m-1 次向下移动的方案数
@@ -70,8 +102,7 @@ func uniquePaths(m int, n int) int {
 	//return int(new(big.Int).Binomial(int64(m+n-2), int64(n-1)).Int64())
 }
 
-//leetcode submit region end(Prohibit modification and deletion)
-
+// 递归
 func uniquePaths_A(m int, n int) int {
 	var (
 		fn      func(x, y int) int
