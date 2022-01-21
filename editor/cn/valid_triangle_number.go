@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"sort"
 )
 
@@ -10,7 +9,9 @@ func main() {
 	//fmt.Println(factorial(4)/(factorial(3)*factorial(4-3)))
 	//fmt.Println(factorial(5)/(factorial(3)*factorial(5-3)))
 
-	fmt.Println(triangleNumber([]int{2, 2, 3, 4, 7, 8, 9}))
+	//fmt.Println(triangleNumber([]int{2, 2, 3, 4}))
+	//fmt.Println(triangleNumber([]int{2, 2, 3, 4, 5}))
+	//fmt.Println(triangleNumber([]int{2, 2, 3, 4, 7, 8, 9}))
 }
 
 //给定一个包含非负整数的数组，你的任务是统计其中可以组成三角形三条边的三元组个数。
@@ -37,6 +38,45 @@ func main() {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 func triangleNumber(nums []int) int {
+	sort.Ints(nums)
+	var (
+		ret      int
+		n        = len(nums)
+		getIndex = func(head, tail, first, second int) int {
+			var s = nums[first] + nums[second]
+			for head < tail {
+				var mid = head + (tail-head)>>1
+				if s > nums[mid] && s > nums[mid+1] {
+					head = mid + 1
+				} else if nums[mid] < s && nums[mid+1] >= s {
+					return mid
+				} else {
+					tail = mid - 1
+				}
+			}
+
+			if nums[head] >= s { //没找到，返回-1
+				return -1
+			}
+			return head
+		}
+	)
+
+	for first := 0; first < n-2; first++ {
+		for second := first + 1; second < n-1; second++ {
+			var head, tail = second + 1, n - 1
+			if third := getIndex(head, tail, first, second); third != -1 {
+				ret += (third - second)
+			}
+		}
+	}
+
+	return ret
+}
+
+//leetcode submit region end(Prohibit modification and deletion)
+
+func triangleNumber_A(nums []int) int {
 	sort.Ints(nums)
 	var (
 		ans      = 0
@@ -71,5 +111,3 @@ func triangleNumber(nums []int) int {
 	}
 	return ans
 }
-
-//leetcode submit region end(Prohibit modification and deletion)
